@@ -1,0 +1,11 @@
+{
+  "IsEncryptedl": false,
+  "Values": {
+    "AzureWebJobsStorage": "UseDevelopmentStorage=true",
+    "FUNCTIONS_WORKER_RUNTIME": "python",
+    "COSMOS_ENDPOINT": "TU_COSMOS_ENDPOINT",
+    "COSMOS_KEY": "TU_COSMOS_KEY",
+    "COSMOS_DATABASE": "pokedex",
+    "JWT_SECRET": "tu_clave_secreta_muy_larga_y_segura"
+  }
+}
