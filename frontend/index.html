@@ -1192,7 +1192,7 @@
 // ============================================================
 // CONFIG
 // ============================================================
-const API_BASE = 'https://your-functions-app.azurewebsites.net/api';
+const API_BASE = 'http://localhost:7071/api';
 // Change this to your actual Azure Functions URL
 
 // ============================================================
@@ -1788,8 +1788,8 @@ async function loadAdmin() {
   showLoading();
   try {
     const [usersData, reportsData] = await Promise.all([
-      api('GET', '/admin/users'),
-      api('GET', '/admin/reports').catch(() => ({ reports: [], total: 0 }))
+      api('GET', '/mgmt/users'),
+      api('GET', '/mgmt/reports').catch(() => ({ reports: [], total: 0 }))
     ]);
     const users = usersData.users || [];
     const reports = reportsData.reports || [];
@@ -1846,7 +1846,7 @@ function switchAdminTab(tab, btn) {
 async function blockUser(userId, username, isActive) {
   if (!confirm(`¿${isActive ? 'Bloquear' : 'Activar'} a ${username}?`)) return;
   try {
-    await api('PUT', '/admin/users/block', { user_id: userId });
+    await api('PUT', '/mgmt/block', { user_id: userId });
     toast(`Usuario ${isActive ? 'bloqueado' : 'activado'}`, 'success');
     loadAdmin();
   } catch (e) { toast(e.message, 'error'); }
@@ -1856,7 +1856,7 @@ async function changeRole(userId, currentRole) {
   const newRole = currentRole === 'admin' ? 'cliente' : 'admin';
   if (!confirm(`¿Cambiar rol a ${newRole}?`)) return;
   try {
-    await api('PUT', '/admin/users/role', { user_id: userId, role: newRole });
+    await api('PUT', '/mgmt/role', { user_id: userId, role: newRole });
     toast(`Rol cambiado a ${newRole}`, 'success');
     loadAdmin();
   } catch (e) { toast(e.message, 'error'); }
@@ -1875,7 +1875,7 @@ async function confirmResetPassword() {
   const newPassword = document.getElementById('reset-new-password').value;
   if (!newPassword || newPassword.length < 8) { toast('Mínimo 8 caracteres', 'error'); return; }
   try {
-    await api('PUT', '/admin/users/reset-password', { user_id: state.resetTargetUser, new_password: newPassword });
+    await api('PUT', '/mgmt/reset-password', { user_id: state.resetTargetUser, new_password: newPassword });
     toast('Contraseña reseteada ✅', 'success');
     closeResetModal();
   } catch (e) { toast(e.message, 'error'); }
