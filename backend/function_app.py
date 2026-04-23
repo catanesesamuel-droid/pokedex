@@ -1,25 +1,25 @@
 import azure.functions as func
-from auth.register import __init__ as register
-from auth.login import __init__ as login
-from auth.logout import __init__ as logout
-from users.get_profile import __init__ as get_profile
-from users.update_profile import __init__ as update_profile
-from users.update_pref import __init__ as update_pref
-from users.delete_account import __init__ as delete_account
-from admin.get_all_users import __init__ as get_all_users
-from admin.block_user import __init__ as block_user
-from admin.change_role import __init__ as change_role
-from admin.reset_password import __init__ as reset_password
-from admin.get_reports import __init__ as get_reports
-from pokemon.get_pokemon import __init__ as get_pokemon
-from pokemon.search_pokemon import __init__ as search_pokemon
-from favorites.get_favorites import __init__ as get_favorites
-from favorites.add_favorites import __init__ as add_favorites
-from favorites.remove_favorites import __init__ as remove_favorites
-from team.get_team import __init__ as get_team
-from team.add_to_team import __init__ as add_to_team
-from team.remove_from_team import __init__ as remove_from_team
-from team.update_team import __init__ as update_team
+import auth.register as register
+import auth.login as login
+import auth.logout as logout
+import users.get_profile as get_profile
+import users.update_profile as update_profile
+import users.update_pref as update_pref
+import users.delete_account as delete_account
+import admin.get_all_users as get_all_users
+import admin.block_user as block_user
+import admin.change_role as change_role
+import admin.reset_password as reset_password
+import admin.get_reports as get_reports
+import pokemon.get_pokemon as get_pokemon
+import pokemon.search_pokemon as search_pokemon
+import favorites.get_favorites as get_favorites
+import favorites.add_favorites as add_favorites
+import favorites.remove_favorites as remove_favorites
+import team.get_team as get_team
+import team.add_to_team as add_to_team
+import team.remove_from_team as remove_from_team
+import team.update_team as update_team
 
 app = func.FunctionApp(http_auth_level=func.AuthLevel.ANONYMOUS)
 
